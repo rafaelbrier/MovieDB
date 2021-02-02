@@ -8,6 +8,7 @@ import useStyles from './styles';
 import TabItem from './TabItem';
 import StyledTab from './TabManager/StyledTab';
 import StyledTabs from './TabManager/StyledTabs';
+import SearchInput from '../../components/SearchInput';
 
 function a11yProps ( index ) {
     return {
@@ -29,7 +30,7 @@ const MainPage = () => {
             <div className={ styles.pageHeader }>
                 <h1 className={ styles.pageTitle }>Movies DB</h1>
                 <Button className={ styles.loginButton }>Login</Button>
-                <input className={ styles.searchBox } name='searchBox' placeholder='Buscar filme' />
+                <SearchInput />
             </div>
 
             <div className={ styles.tabs }>

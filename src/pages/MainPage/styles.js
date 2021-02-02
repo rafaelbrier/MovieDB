@@ -22,10 +22,7 @@ const useStyles = makeStyles( ( theme ) => ( {
         fontSize: '1rem',
         fontFamily: 'Serif',
     },
-    searchBox: {
-        // display: 'flex',
-        // justifyContent: 'center',
-    },
+
     tabs: {
         flexGrow: 1,
     },
