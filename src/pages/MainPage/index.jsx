@@ -1,14 +1,20 @@
 import { Button, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
+import Latest from '../Latest';
 import Popular from '../Popular';
 import TopRated from '../TopRated';
 import Trending from '../Trending';
 import useStyles from './styles';
-
-import { StyledTab as ST2, StyledTabs as STs2 } from './TabManager';
-
+import TabItem from './TabItem';
 import StyledTab from './TabManager/StyledTab';
 import StyledTabs from './TabManager/StyledTabs';
+
+function a11yProps ( index ) {
+    return {
+        id: `scrollable-prevent-tab-${ index }`,
+        'aria-controls': `scrollable-prevent-tabpanel-${ index }`,
+    };
+}
 
 const MainPage = () => {
     const styles = useStyles();
@@ -28,32 +34,24 @@ const MainPage = () => {
 
             <div className={ styles.tabs }>
                 <StyledTabs value={ value } onChange={ handleChange } >
-                    <StyledTab label="Trending">
-                        <Trending />
-                    </StyledTab>
-                    <StyledTab label="Popular" >
-                        <Popular />
-                    </StyledTab>
-                    <StyledTab label="Top Rated" >
-                        <TopRated />
-                    </StyledTab>
+                    <StyledTab label="Trending" { ...a11yProps( 0 ) } />
+                    <StyledTab label="Popular" { ...a11yProps( 1 ) } />
+                    <StyledTab label="Top Rated" { ...a11yProps( 2 ) } />
+                    <StyledTab label="Latest" { ...a11yProps( 3 ) } />
                 </StyledTabs>
                 <Typography className={ styles.padding } />
-            </div>
-
-            <div className={ styles.tabs }>
-                <STs2 value={ value } onChange={ handleChange } >
-                    <ST2 label="Trending">
-                        <Trending />
-                    </ST2>
-                    <ST2 label="Popular" >
-                        <Popular />
-                    </ST2>
-                    <ST2 label="Top Rated" >
-                        <TopRated />
-                    </ST2>
-                </STs2>
-                <Typography className={ styles.padding } />
+                <TabItem value={ value } index={ 0 }>
+                    <Trending />
+                </TabItem>
+                <TabItem value={ value } index={ 1 }>
+                    <Popular />
+                </TabItem>
+                <TabItem value={ value } index={ 2 }>
+                    <TopRated />
+                </TabItem>
+                <TabItem value={ value } index={ 3 }>
+                    <Latest />
+                </TabItem>
             </div>
         </>
     );

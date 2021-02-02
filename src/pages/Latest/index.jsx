@@ -1,32 +1,18 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import api from '../../services/api';
+import React from 'react';
+import useFetch from '../../hooks/useFetch';
 import apiData from '../../services/apiData';
 
-// async function buscaLancamento () {
-//     try {
-//         return await api.get( apiData.latest );
-//     }
-//     catch ( err ) {
-//         const error = 'Erro app -> buscaLancamentos; Erro: ' + err;
-//         console.log( error );
-//         throw err;
-//     }
-// }
-
 const Latest = () => {
-    // const [ movieList, setMovieList ] = useState( [] );
-
-    // const fetchMovies = useCallback( async () => {
-    //     const res = await buscaLancamento();
-    //     console.log( res );
-    // }, [] );
-
-    // useEffect( () => {
-    //     fetchMovies();
-    // }, [ fetchMovies ] );
-
+    const [ movie, loading, error ] = useFetch( apiData.latest );
+    console.log( movie );
     return (
-        <h1>Pagina de Lançamentos</h1>
+        <>
+            {loading && <p>Loading</p> }
+            {error && <p>Erro</p> }
+            <h1>Pagina de Lançamentos:</h1>
+            <h3>Lançamento de hoje:</h3>
+            {!error && <h5>{ movie.original_title }</h5> }
+        </>
     );
 }
 
