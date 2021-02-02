@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import Popular from '../Popular';
 import TopRated from '../TopRated';
 import Trending from '../Trending';
-import { StyledTab, StyledTabs } from './TabManager';
-import { useStyles } from './styles';
+import useStyles from './styles';
+
+import { StyledTab as ST2, StyledTabs as STs2 } from './TabManager';
+
+import StyledTab from './TabManager/StyledTab';
+import StyledTabs from './TabManager/StyledTabs';
 
 const MainPage = () => {
     const styles = useStyles();
@@ -34,6 +38,21 @@ const MainPage = () => {
                         <TopRated />
                     </StyledTab>
                 </StyledTabs>
+                <Typography className={ styles.padding } />
+            </div>
+
+            <div className={ styles.tabs }>
+                <STs2 value={ value } onChange={ handleChange } >
+                    <ST2 label="Trending">
+                        <Trending />
+                    </ST2>
+                    <ST2 label="Popular" >
+                        <Popular />
+                    </ST2>
+                    <ST2 label="Top Rated" >
+                        <TopRated />
+                    </ST2>
+                </STs2>
                 <Typography className={ styles.padding } />
             </div>
         </>
