@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core'
 
-const useStyles = makeStyles( () => ( {
+const useStyles = makeStyles( {
     tabMenu: {
         indicator: {
             display: 'flex',
@@ -18,6 +18,6 @@ const useStyles = makeStyles( () => ( {
         width: '100%',
         backgroundColor: 'red',
     },
-} ) );
+} );
 
 export default useStyles;

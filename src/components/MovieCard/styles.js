@@ -2,9 +2,13 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles( {
     root: {
-        minWidth: 275,
+        width: '19.5%',
+        padding: 4,
         backgroundColor: 'black',
         color: 'white ',
+    },
+    cardContent: {
+        padding: 0,
     },
     bullet: {
         display: 'inline-block',
@@ -24,8 +28,7 @@ const useStyles = makeStyles( {
         },
     },
     image: {
-        width: 350,
-        heigh: 350,
+        width: '100%',
     }
 } );
 

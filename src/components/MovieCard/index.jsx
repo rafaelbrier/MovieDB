@@ -14,7 +14,6 @@ const MovieCard = ( { movie } ) => {
             const baseUrl = data.images.base_url;
             const backdropSizes = 'original';
             setImg( baseUrl + backdropSizes + movie.backdrop_path );
-
         }
         catch ( e ) {
             setImg( '' );
@@ -27,9 +26,9 @@ const MovieCard = ( { movie } ) => {
 
     return (
         <Card className={ styles.root }>
-            <CardContent>
+            <CardContent className={ styles.cardContent }>
                 <Typography className={ styles.title }  >
-                    Título: { movie.original_title }
+                    { movie.original_title }
                 </Typography>
                 <img className={ styles.image } src={ img } alt={ `${ movie.original_title }_img` } />
                 <div className={ styles.nota }>
