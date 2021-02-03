@@ -13,7 +13,6 @@ const MovieCard = ( { movie } ) => {
             const { data } = await api.get( apiData.config );
             const baseUrl = data.images.base_url;
             const backdropSizes = 'original';
-            console.log( baseUrl + backdropSizes + movie.backdrop_path );
             setImg( baseUrl + backdropSizes + movie.backdrop_path );
 
         }
