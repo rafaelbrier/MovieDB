@@ -5,6 +5,7 @@ import apiData from '../../services/apiData';
 
 const Trending = () => {
     const [ movieList, loading, error ] = useFetch( apiData.trending( "all" ) );
+
     console.log( movieList );
     return (
         <>
