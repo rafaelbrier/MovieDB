@@ -7,6 +7,8 @@ const apiData = {
     latest: `/movie/latest?api_key=${ key }&language=${ language }`,
     popular: `/movie/popular?api_key=${ key }&language=${ language }&page=1`,
     topRated: `/movie/top_rated?api_key=${ key }&language=${ language }&page=1`,
+    movieImage: ( movieId ) => `/movie/{${ movieId }}/images?api_key=${ key }&language=${ language }`,
+    config: `/configuration?api_key=${ key }`,
 }
 
 export default apiData;
