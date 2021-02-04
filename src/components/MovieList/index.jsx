@@ -39,8 +39,8 @@ const MovieList = ( { list } ) => {
     }
 
 
-    return (
-        <>
+    if ( list.length > 0 ) {
+        return (
             <div className={ styles.root }>
                 { listaExibida.map( ( movie, index ) => (
                     <MovieCard key={ index } movie={ movie } img={ getImage( index ) } />
@@ -52,8 +52,9 @@ const MovieList = ( { list } ) => {
                     <ArrowBackIosIcon className={ styles.iconSize } />
                 </IconButton>
             </div>
-        </>
-    );
+        );
+    }
+    return null;
 }
 
 export default MovieList;

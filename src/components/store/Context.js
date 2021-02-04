@@ -4,6 +4,8 @@ const DataContext = createContext( {
     configuration: null,
     baseUrl: null,
     backdropSizes: '',
+    listaFavoritos: [],
+    setListaFavoritos: () => { },
 } );
 
 export default DataContext;

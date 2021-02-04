@@ -11,8 +11,6 @@ const Trending = () => {
     const mvLista = mvList !== '' ? mvList.results : [];
     const tvLista = tvList !== '' ? tvList.results : [];
 
-    console.log( "trending", mvList );
-
     return (
         <>
             <h1>Trending</h1>

@@ -11,14 +11,14 @@ const useStyles = makeStyles( {
         right: 1,
         display: 'flex',
         alignSelf: 'center',
-        color: 'grey',
+        color: 'white',
     },
     prevPageButton: {
         position: 'absolute',
         left: 1,
         display: 'flex',
         alignSelf: 'center',
-        color: 'grey',
+        color: 'white',
     },
     iconSize: {
         fontSize: '2.5rem',

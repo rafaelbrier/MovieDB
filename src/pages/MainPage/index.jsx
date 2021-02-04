@@ -1,6 +1,6 @@
 import { Button, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import Latest from '../Latest';
+// import Latest from '../Latest';
 import Popular from '../Popular';
 import TopRated from '../TopRated';
 import Trending from '../Trending';
@@ -9,6 +9,7 @@ import TabItem from './TabItem';
 import StyledTab from './TabManager/StyledTab';
 import StyledTabs from './TabManager/StyledTabs';
 import SearchInput from '../../components/SearchInput';
+import Favorites from '../Favorites';
 
 function a11yProps ( index ) {
     return {
@@ -38,7 +39,7 @@ const MainPage = () => {
                     <StyledTab label="Trending" { ...a11yProps( 0 ) } />
                     <StyledTab label="Popular" { ...a11yProps( 1 ) } />
                     <StyledTab label="Top Rated" { ...a11yProps( 2 ) } />
-                    <StyledTab label="Latest" { ...a11yProps( 3 ) } />
+                    <StyledTab label="Favorites" { ...a11yProps( 3 ) } />
                 </StyledTabs>
                 <Typography className={ styles.padding } />
                 <TabItem value={ value } index={ 0 }>
@@ -51,7 +52,7 @@ const MainPage = () => {
                     <TopRated />
                 </TabItem>
                 <TabItem value={ value } index={ 3 }>
-                    <Latest />
+                    <Favorites />
                 </TabItem>
             </div>
         </>

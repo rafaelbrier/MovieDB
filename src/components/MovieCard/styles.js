@@ -4,17 +4,27 @@ const useStyles = makeStyles( {
     root: {
         width: '19.5%',
         padding: 4,
+        height: 330,
         backgroundColor: 'black',
         color: 'white ',
     },
     cardContent: {
         padding: 0,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
     },
     title: {
         fontSize: 16,
+        height: '10%',
     },
-    pos: {
-        marginBottom: 12,
+    image: {
+        width: '100%',
+    },
+    inferior: {
+        display: 'flex',
+        justifyContent: 'space-between',
     },
     nota: {
         fontSize: 14,
@@ -22,8 +32,9 @@ const useStyles = makeStyles( {
             margin: ' 0 auto ',
         },
     },
-    image: {
-        width: '100%',
+    botaoFavoritar: {
+        marginRight: '3%',
+        color: 'white',
     }
 } );
 
