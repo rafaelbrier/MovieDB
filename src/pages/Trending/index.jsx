@@ -8,8 +8,6 @@ const Trending = () => {
     const [ mvList, mvloading, mvError ] = useFetch( apiData.trending( "movie" ) );
     const [ tvList, tvLoading, tvError ] = useFetch( apiData.trending( "tv" ) );
 
-    // const listas = movieList !== '' ? movieList.results.slice( 0, 5 ) : [];
-
     const mvLista = mvList !== '' ? mvList.results : [];
     const tvLista = tvList !== '' ? tvList.results : [];
 
@@ -22,7 +20,6 @@ const Trending = () => {
             { mvloading && <p>Loading</p> }
             { mvError && <p>Erro</p> }
             <MovieList list={ mvLista } />
-
             <h2>TV Shows</h2>
             { tvLoading && <p>Loading</p> }
             { tvError && <p>Erro</p> }

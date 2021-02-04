@@ -4,25 +4,8 @@ import api from '../../services/api';
 import apiData from '../../services/apiData';
 import useStyles from './styles';
 
-const MovieCard = ( { movie } ) => {
+const MovieCard = ( { movie, img } ) => {
     const styles = useStyles();
-    const [ img, setImg ] = useState( '' );
-
-    const getImage = useCallback( async () => {
-        try {
-            const { data } = await api.get( apiData.config );
-            const baseUrl = data.images.base_url;
-            const backdropSizes = 'original';
-            setImg( baseUrl + backdropSizes + movie.backdrop_path );
-        }
-        catch ( e ) {
-            setImg( '' );
-        }
-    }, [ movie ] )
-
-    useEffect( () => {
-        getImage();
-    }, [ getImage ] );
 
     return (
         <Card className={ styles.root }>

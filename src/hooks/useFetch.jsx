@@ -11,8 +11,8 @@ function useFetch ( Request ) {
             setLoading( true );
             const { data } = await api.get( Request );
             if ( data ) {
-                setLoading( false );
                 setRes( data );
+                setLoading( false );
             }
         }
         catch ( e ) {

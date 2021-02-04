@@ -10,11 +10,6 @@ const useStyles = makeStyles( {
     cardContent: {
         padding: 0,
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
     title: {
         fontSize: 16,
     },
