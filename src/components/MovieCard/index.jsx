@@ -9,7 +9,7 @@ const MovieCard = ( { movie, img } ) => {
     const { listaFavoritos, setListaFavoritos } = useContext( DataContext );
 
     function toogleFavorito () {
-        const favorito = listaFavoritos.includes( movie );
+        const favorito = listaFavoritos.some( ( mov ) => mov.id === movie.id );
         if ( favorito ) {
             listaFavoritos.splice( listaFavoritos.indexOf( movie ), 1 );
             setListaFavoritos( [ ...listaFavoritos ] );
@@ -20,7 +20,7 @@ const MovieCard = ( { movie, img } ) => {
     }
 
     function isFilled () {
-        return listaFavoritos.includes( movie );
+        return listaFavoritos.some( ( mov ) => mov.id === movie.id );
     }
 
     return (
