@@ -7,6 +7,7 @@ const useStyles = makeStyles( {
         height: 330,
         backgroundColor: 'black',
         color: 'white ',
+        overflow: 'visible',
     },
     cardContent: {
         padding: 0,
@@ -21,6 +22,11 @@ const useStyles = makeStyles( {
     },
     image: {
         width: '100%',
+        '&:hover': {
+            width: '115%',
+            zIndex: 1,
+            alignSelf: 'center',
+        },
     },
     inferior: {
         display: 'flex',
@@ -33,7 +39,6 @@ const useStyles = makeStyles( {
         },
     },
     botaoFavoritar: {
-        marginRight: '3%',
         color: 'white',
     }
 } );

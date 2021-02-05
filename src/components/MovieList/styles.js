@@ -2,8 +2,9 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles( {
     root: {
-        display: 'inline-flex',
+        display: 'flex',
         position: 'relative',
+        width: '100%',
         // flexWrap: 'wrap',
     },
     nextPageButton: {
@@ -12,6 +13,8 @@ const useStyles = makeStyles( {
         display: 'flex',
         alignSelf: 'center',
         color: 'white',
+        zIndex: 2,
+        padding: 0,
     },
     prevPageButton: {
         position: 'absolute',
@@ -19,10 +22,11 @@ const useStyles = makeStyles( {
         display: 'flex',
         alignSelf: 'center',
         color: 'white',
+        zIndex: 2,
+        padding: 0,
     },
     iconSize: {
         fontSize: '2.5rem',
-        paddingLeft: '5px',
     },
 } );
 

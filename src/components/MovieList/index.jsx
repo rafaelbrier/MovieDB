@@ -19,16 +19,20 @@ const MovieList = ( { list } ) => {
         return list.slice( inicial, final );
     }, [ pag, list ] );
 
-    const imageArray = useMemo( () => {
-        let array = [];
-        list.forEach( ( movie ) => {
-            array.push( baseUrl + backdropSizes + movie.backdrop_path );
-        } );
-        return array;
-    }, [ list, baseUrl, backdropSizes ] );
+    // const imageArray = useMemo( () => {
+    //     let array = [];
+    //     list.forEach( ( movie ) => {
+    //         array.push( baseUrl + backdropSizes + movie.backdrop_path );
+    //     } );
+    //     return array;
+    // }, [ list, baseUrl, backdropSizes ] );
 
-    function getImage ( index ) {
-        return imageArray[ pag * moviesPorPag + index ];
+    // function getImage ( index ) {
+    //     return imageArray[ pag * moviesPorPag + index ];
+    // }
+
+    function getImage ( movie ) {
+        return baseUrl + backdropSizes + movie.backdrop_path;
     }
 
     function changePage ( page ) {
@@ -43,7 +47,7 @@ const MovieList = ( { list } ) => {
         return (
             <div className={ styles.root }>
                 { listaExibida.map( ( movie, index ) => (
-                    <MovieCard key={ index } movie={ movie } img={ getImage( index ) } />
+                    <MovieCard key={ index } movie={ movie } img={ getImage( movie ) } />
                 ) ) }
                 <IconButton className={ styles.nextPageButton } aria-label="next" onClick={ () => changePage( 'next' ) }>
                     <ArrowForwardIosIcon className={ styles.iconSize } />

@@ -1,17 +1,19 @@
 import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import StarButton from '../StarButton/indes';
 import DataContext from '../store/Context';
+import MovieInfo from './MovieInfo';
 import useStyles from './styles';
 
 const MovieCard = ( { movie, img } ) => {
     const styles = useStyles();
     const { listaFavoritos, setListaFavoritos } = useContext( DataContext );
+    const [ openModal, setOpenModal ] = useState( false );
 
     function toogleFavorito () {
         const favorito = listaFavoritos.some( ( mov ) => mov.id === movie.id );
         if ( favorito ) {
-            listaFavoritos.splice( listaFavoritos.indexOf( movie ), 1 );
+            listaFavoritos.splice( listaFavoritos.findIndex( ( mov ) => mov.id === movie.id ), 1 );
             setListaFavoritos( [ ...listaFavoritos ] );
         }
         else {
@@ -23,13 +25,20 @@ const MovieCard = ( { movie, img } ) => {
         return listaFavoritos.some( ( mov ) => mov.id === movie.id );
     }
 
+    function setModal () {
+        setOpenModal( ( status ) => !status );
+    }
+
     return (
         <Card className={ styles.root }>
             <CardContent className={ styles.cardContent }>
                 <Typography className={ styles.title }  >
-                    { movie.original_title }
+                    { movie.title || movie.name }
                 </Typography>
-                <img className={ styles.image } src={ img } alt={ `${ movie.original_title }_img` } />
+                <img className={ styles.image } src={ img } alt={ `${ movie.original_title }_img` }
+                    onClick={ setModal }
+                />
+                <MovieInfo movie={ movie } img={ img } open={ openModal } setStatus={ setModal } />
                 <div className={ styles.inferior }>
                     <div className={ styles.nota }>
                         <p>Nota: { movie.vote_average }/10</p>
