@@ -19,13 +19,27 @@ const MovieList = ( { list } ) => {
         return list.slice( inicial, final );
     }, [ pag, list ] );
 
-    // const imageArray = useMemo( () => {
-    //     let array = [];
-    //     list.forEach( ( movie ) => {
-    //         array.push( baseUrl + backdropSizes + movie.backdrop_path );
-    //     } );
-    //     return array;
-    // }, [ list, baseUrl, backdropSizes ] );
+    // const onLoadArray = useMemo( () => {
+    useMemo( () => {
+        let array = [];
+        if ( list.length > 0 ) {
+            list.forEach( ( movie ) => {
+                const img = new Image();
+                img.src = baseUrl + backdropSizes + movie.backdrop_path;
+                // img.onload = () => {
+                //     array.push( img );
+                // }
+            } );
+            return array;
+        }
+    }, [ list, baseUrl, backdropSizes ] );
+
+    // useEffect( () => {
+    //     if ( list.length ) {
+    //         const completo = onLoadArray.length === list.length;
+    //         console.log( "array completo:", completo );
+    //     }
+    // }, [ onLoadArray, list ] );
 
     // function getImage ( index ) {
     //     return imageArray[ pag * moviesPorPag + index ];
