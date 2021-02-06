@@ -1,26 +1,26 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import MovieCard from '../MovieCard';
-import useStyles from './styles';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { IconButton } from '@material-ui/core';
-import DataContext from '../store/Context';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import React, { useMemo, useState } from 'react';
+import MovieCard from '../MovieCard';
+import { useDataContext } from '../store/Provider';
+import useStyles from './styles';
 
 const moviesPorPag = 5;
 
-const MovieList = ( { list } ) => {
+const MovieList = ({ list }) => {
     const styles = useStyles();
-    const [ pag, setPag ] = useState( 0 );
-    const { baseUrl, backdropSizes } = useContext( DataContext );
+    const [pag, setPag] = useState(0);
+    const { baseUrl, backdropSizes } = useDataContext();
     // const [ imagesLoaded, setImagesLoaded ] = useState( false );
     // const [ countLoaded, setCountLoaded ] = useState( 0 );
     // const [ imgArray, setImgArray ] = useState( [] );
 
-    const listaExibida = useMemo( () => {
+    const listaExibida = useMemo(() => {
         let inicial = pag * moviesPorPag;
         let final = pag * moviesPorPag + moviesPorPag;
-        return list.slice( inicial, final );
-    }, [ pag, list ] );
+        return list.slice(inicial, final);
+    }, [pag, list]);
 
     // const onLoadArray = useMemo( () => {
     // useMemo( () => {
@@ -64,34 +64,31 @@ const MovieList = ( { list } ) => {
     //     return imgArray[ pag * moviesPorPag + index ];
     // }
 
-    function getImage ( movie ) {
+    function getImage(movie) {
         return baseUrl + backdropSizes + movie.backdrop_path;
     }
 
-    function changePage ( page ) {
-        if ( page === 'next' && pag + 1 < list.length / moviesPorPag )
-            setPag( ( pag ) => pag + 1 );
-        if ( page === 'prev' && pag - 1 >= 0 )
-            setPag( ( pag ) => pag - 1 );
+    function changePage(page) {
+        if (page === 'next' && pag + 1 < list.length / moviesPorPag) setPag((pag) => pag + 1);
+        if (page === 'prev' && pag - 1 >= 0) setPag((pag) => pag - 1);
     }
 
-
-    if ( list.length > 0 ) {
+    if (list.length > 0) {
         return (
-            <div className={ styles.root }>
-                { listaExibida.map( ( movie, index ) => (
-                    <MovieCard key={ index } movie={ movie } img={ getImage( movie ) } />
-                ) ) }
-                <IconButton className={ styles.nextPageButton } aria-label="next" onClick={ () => changePage( 'next' ) }>
-                    <ArrowForwardIosIcon className={ styles.iconSize } />
+            <div className={styles.root}>
+                {listaExibida.map((movie, index) => (
+                    <MovieCard key={index} movie={movie} img={getImage(movie)} />
+                ))}
+                <IconButton className={styles.nextPageButton} aria-label='next' onClick={() => changePage('next')}>
+                    <ArrowForwardIosIcon className={styles.iconSize} />
                 </IconButton>
-                <IconButton className={ styles.prevPageButton } aria-label="prev" onClick={ () => changePage( 'prev' ) }>
-                    <ArrowBackIosIcon className={ styles.iconSize } />
+                <IconButton className={styles.prevPageButton} aria-label='prev' onClick={() => changePage('prev')}>
+                    <ArrowBackIosIcon className={styles.iconSize} />
                 </IconButton>
             </div>
         );
     }
     return null;
-}
+};
 
 export default MovieList;
