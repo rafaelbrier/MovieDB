@@ -5,9 +5,10 @@ const timeWindow = 'day';
 const apiData = {
     trending: ( mediaType ) => `/trending/${ mediaType }/${ timeWindow }?api_key=${ key }`,
     latest: `/movie/latest?api_key=${ key }&language=${ language }`,
-    popular: `/movie/popular?api_key=${ key }&language=${ language }&page=1`,
-    topRated: `/movie/top_rated?api_key=${ key }&language=${ language }&page=1`,
+    popular: ( page ) => `/movie/popular?api_key=${ key }&language=${ language }&page=${ page }`,
+    topRated: ( page ) => `/movie/top_rated?api_key=${ key }&language=${ language }&page=${ page }`,
     movieImage: ( movieId ) => `/movie/{${ movieId }}/images?api_key=${ key }&language=${ language }`,
+    searchMovie: ( movie, page ) => `/search/movie?api_key=${ key }&query=${ movie }&page=${ page }`,
     config: `/configuration?api_key=${ key }`,
 }
 

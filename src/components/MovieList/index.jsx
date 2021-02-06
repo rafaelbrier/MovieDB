@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import MovieCard from '../MovieCard';
 import useStyles from './styles';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -12,6 +12,9 @@ const MovieList = ( { list } ) => {
     const styles = useStyles();
     const [ pag, setPag ] = useState( 0 );
     const { baseUrl, backdropSizes } = useContext( DataContext );
+    // const [ imagesLoaded, setImagesLoaded ] = useState( false );
+    // const [ countLoaded, setCountLoaded ] = useState( 0 );
+    // const [ imgArray, setImgArray ] = useState( [] );
 
     const listaExibida = useMemo( () => {
         let inicial = pag * moviesPorPag;
@@ -20,29 +23,45 @@ const MovieList = ( { list } ) => {
     }, [ pag, list ] );
 
     // const onLoadArray = useMemo( () => {
-    useMemo( () => {
-        let array = [];
-        if ( list.length > 0 ) {
-            list.forEach( ( movie ) => {
-                const img = new Image();
-                img.src = baseUrl + backdropSizes + movie.backdrop_path;
-                // img.onload = () => {
-                //     array.push( img );
-                // }
-            } );
-            return array;
-        }
-    }, [ list, baseUrl, backdropSizes ] );
+    // useMemo( () => {
+    //     let array = [];
+    //     if ( list.length > 0 ) {
+    //         list.forEach( ( movie ) => {
+    //             const img = new Image();
+    //             img.src = baseUrl + backdropSizes + movie.backdrop_path;
+    //             console.log( "buscando imagem" );
+    //             img.onload = () => {
+    //                 console.log( "imagem carregada" );
+    //                 array.push( '1' );
+    //                 setCountLoaded( ( count ) => count + 1 );
+    //                 setImgArray( [ ...imgArray, img ] );
+    //             }
+    //         } );
+    //         return array;
+    //     }
+    // }, [ list, baseUrl, backdropSizes ] );
 
     // useEffect( () => {
-    //     if ( list.length ) {
-    //         const completo = onLoadArray.length === list.length;
-    //         console.log( "array completo:", completo );
-    //     }
-    // }, [ onLoadArray, list ] );
+    //     console.log( onLoadArray );
+    //     console.log( onLoadArray.length );
+    //     if ( onLoadArray.length === 20 )
+    //         setImagesLoaded( true );
+    // }, [ onLoadArray, setImagesLoaded ] );
+
+    // useEffect( () => {
+    //     console.log( countLoaded );
+    //     if ( countLoaded === 20 )
+    //         setImagesLoaded( true );
+    // }, [ countLoaded, setImagesLoaded ] );
+
+    // useEffect( () => {
+    //     console.log( imgArray );
+    //     if ( imgArray.length === 20 )
+    //         setImagesLoaded( true );
+    // }, [ imgArray, setImagesLoaded ] );
 
     // function getImage ( index ) {
-    //     return imageArray[ pag * moviesPorPag + index ];
+    //     return imgArray[ pag * moviesPorPag + index ];
     // }
 
     function getImage ( movie ) {

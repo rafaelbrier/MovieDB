@@ -3,7 +3,7 @@ import useStyles from './styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 
-const SearchInput = () => {
+const SearchInput = ( { onChange } ) => {
     const styles = useStyles();
 
     return (
@@ -11,10 +11,13 @@ const SearchInput = () => {
             <div className={ styles.searchIcon }>
                 <SearchIcon />
             </div>
-            <InputBase placeholder='Buscar filme' classes={ {
-                root: styles.inputRoot,
-                input: styles.inputInput,
-            } }
+            <InputBase
+                placeholder='Buscar filme'
+                onChange={ onChange }
+                classes={ {
+                    root: styles.inputRoot,
+                    input: styles.inputInput,
+                } }
                 inputProps={ { 'aria-label': 'search' } }
             />
         </div>

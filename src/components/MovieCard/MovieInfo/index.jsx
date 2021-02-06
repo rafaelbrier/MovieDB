@@ -15,7 +15,6 @@ const MovieInfo = ( { movie, open, setStatus } ) => {
     function getImage () {
         return baseUrl + backdropSizes + movie.poster_path;
     }
-    console.log( "movie:", movie );
 
     return (
         <Modal
@@ -46,8 +45,8 @@ const MovieInfo = ( { movie, open, setStatus } ) => {
                         <div className={ styles.bottom }>
                             <p>
                                 Genre:
-                                { movie.genre_ids.map( ( genre ) => (
-                                <span> { genre }</span>
+                                { movie.genre_ids.map( ( genre, index ) => (
+                                <span key={ index }> { genre }</span>
                             ) ) }
                             </p>
                             <p>Release Date: { movie.release_date || movie.first_air_date }</p>
@@ -58,7 +57,6 @@ const MovieInfo = ( { movie, open, setStatus } ) => {
                             <p>Total de votos: { movie.vote_count }</p>
                         </div>
                     </div>
-
                 </div>
             </Fade>
         </Modal>

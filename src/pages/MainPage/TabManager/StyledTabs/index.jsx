@@ -2,7 +2,6 @@ import { Tabs, withStyles } from '@material-ui/core';
 
 const StyledTabs = withStyles( {
     indicator: {
-
         display: 'flex',
         justifyContent: 'center',
         backgroundColor: 'transparent',
@@ -12,7 +11,7 @@ const StyledTabs = withStyles( {
             backgroundColor: 'red',
         },
     },
-} )( ( ( props ) => <Tabs { ...props } TabIndicatorProps={ { children: <span /> } } /> )
-);
+} )( ( ( props ) => <Tabs { ...props } TabIndicatorProps={ { children: <span /> } } /> ) );
+
 
 export default StyledTabs;

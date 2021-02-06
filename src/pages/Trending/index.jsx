@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
 import MovieList from '../../components/MovieList';
@@ -6,10 +6,10 @@ import useFetch from '../../hooks/useFetch';
 import apiData from '../../services/apiData';
 import useStyles from './styles';
 
-
 const Trending = () => {
-    const [ mvList, mvloading, mvError ] = useFetch( apiData.trending( "movie" ) );
-    const [ tvList, tvLoading, tvError ] = useFetch( apiData.trending( "tv" ) );
+    const [ mvList, mvloading, mvError, fetchMvList ] = useFetch( apiData.trending( "movie" ) );
+    const [ tvList, tvLoading, tvError, fetchTvList ] = useFetch( apiData.trending( "tv" ) );
+    const [ page, setPage ] = useState( 1 );
     const styles = useStyles();
 
     function isLoading () {
@@ -19,6 +19,11 @@ const Trending = () => {
     function hasError () {
         return mvError || tvError;
     }
+
+    useEffect( () => {
+        fetchMvList( apiData.trending( "movie" ) );
+        fetchTvList( apiData.trending( "tv" ) );
+    }, [ page, fetchMvList, fetchTvList ] );
 
     return (
         <div className={ styles.root }>
