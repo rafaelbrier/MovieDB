@@ -1,33 +1,33 @@
 import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles( {
+const useStyles = makeStyles({
     root: {
         display: 'flex',
-        position: 'relative',
         width: '100%',
         // flexWrap: 'wrap',
+        scrollBehavior: 'smooth',
+        overflow: 'hidden',
+    },
+    pageButton: {
+        position: 'absolute',
+        display: 'flex',
+        alignSelf: 'center',
+        color: 'white',
+        zIndex: 2,
+        padding: 0,
     },
     nextPageButton: {
-        position: 'absolute',
         right: 1,
-        display: 'flex',
-        alignSelf: 'center',
-        color: 'white',
-        zIndex: 2,
-        padding: 0,
     },
     prevPageButton: {
-        position: 'absolute',
         left: 1,
-        display: 'flex',
-        alignSelf: 'center',
-        color: 'white',
-        zIndex: 2,
-        padding: 0,
     },
     iconSize: {
         fontSize: '2.5rem',
     },
-} );
+    iconDisabled: {
+        color: 'darkgray !important',
+    },
+});
 
 export default useStyles;
